@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dep-fast
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fast
+  template:
+    metadata:
+      labels:
+        app: fast
+    spec:
+      containers:
+        - name: con-fast
+          image: 165749212250.dkr.ecr.ap-northeast-2.amazonaws.com/fast:bootstrap
+          ports:
+            - containerPort: 8000
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 8000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8000
+            initialDelaySeconds: 10
+            periodSeconds: 20
