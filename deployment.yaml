@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: con-fast
-          image: 165749212250.dkr.ecr.ap-northeast-2.amazonaws.com/fast:bootstrap
+                    image: 165749212250.dkr.ecr.ap-northeast-2.amazonaws.com/fast:5100a8b3fd79a2d7229161f532711fe83e21405a
           ports:
             - containerPort: 8000
           readinessProbe:
